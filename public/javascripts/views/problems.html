@@ -1,0 +1,18 @@
+<div id="problems">
+  <table>
+    <tr ng-repeat='problem in problems'>
+      <td>{{problem.n1}} {{problem.opSym}} {{problem.n2}}</td>
+      <td>=</td>
+      <td>
+        <input type='text' ng-model='user_ans'>
+      </td>
+      <td>
+        <span ng-show='+user_ans === +problem.ans' class='gud'>yeah</span>
+        <span ng-show='user_ans.length > 0 && +user_ans !== +problem.ans' class='err'>oops</span>
+      </td>
+    </tr>
+  </table>
+  <h3>
+    <a href='#/'>back</a>
+  </h3>
+</div>
