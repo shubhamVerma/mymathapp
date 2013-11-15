@@ -28,7 +28,7 @@ A single problem object looks like this:
 * `op` and `opSym` represent the type of operation to be performed on those numbers. 
 * `ans` is the result of the operation.
 
----
+
 
 The URL `/api/v1/problems`, when does not provided with any parameters, returns a set of 10 problems of different type.
 
