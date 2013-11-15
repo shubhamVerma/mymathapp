@@ -1,5 +1,4 @@
 ## MyMathApp
----
 
 It is a simple web app for kids for practicing maths. It has been built with Express framework at the back end and AngularJS on the front end.
 
@@ -9,7 +8,6 @@ It also provides a simple API for generating Maths problems.
 
 
 ## API
----
 
 The URL for accessing the API is - `/api/v1/problems`.
 The response is in JSON.
