@@ -91,6 +91,10 @@
       level = req.query.level || DEFAULT_LEVEL;
       type  = req.query.type  || null;
 
+      if(type === 'rand') {
+        type = null;
+      }
+
       for (i = 0; i < limit; i++) {
         problems.push(generateProblem(level, type));
       }
