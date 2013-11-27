@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mymathapp by shubhamVerma</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Mymathapp</h1>
+        <p>A simple web app for practicing Maths</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/shubhamVerma/mymathapp" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/shubhamVerma/mymathapp/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/shubhamVerma/mymathapp/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h2>
+<a name="mymathapp" class="anchor" href="#mymathapp"><span class="octicon octicon-link"></span></a>MyMathApp</h2>
+
+<p>It is a simple web app for kids for practicing maths. It has been built with Express framework at the back end and AngularJS on the front end.</p>
+
+<p>It currently resides at - <a href="http://mymathapp.herokuapp.com">http://mymathapp.herokuapp.com</a></p>
+
+<p>It also provides a simple API for generating Maths problems.</p>
+
+<h2>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
+
+<p>The URL for accessing the API is - <code>/api/v1/problems</code>.
+The response is in JSON.</p>
+
+<p>A single problem object looks like this:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
+    <span class="nx">n1</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">n2</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nx">op</span><span class="o">:</span> <span class="s2">"sub"</span><span class="p">,</span>
+    <span class="nx">opSym</span><span class="o">:</span> <span class="s2">"-"</span><span class="p">,</span>
+    <span class="nx">ans</span><span class="o">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+
+</pre></div>
+
+<ul>
+<li>
+<code>n1</code> and <code>n2</code> are the randomly generated numbers. </li>
+<li>
+<code>op</code> and <code>opSym</code> represent the type of operation to be performed on those numbers. </li>
+<li>
+<code>ans</code> is the result of the operation.</li>
+</ul><p>The URL <code>/api/v1/problems</code>, when does not provided with any parameters, returns a set of 10 problems of different type.</p>
+
+<p>It may accept following parameters:</p>
+
+<table>
+<thead><tr>
+<th align="center">Name</th>
+<th align="center">Default Value</th>
+<th>Use/Possible Values</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="center"><code>limit</code></td>
+<td align="center">10</td>
+<td>Number of problems. Anything greater than 0</td>
+</tr>
+<tr>
+<td align="center"><code>type</code></td>
+<td align="center"><code>rand</code></td>
+<td>
+<code>add</code> - Only addition problems</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>
+<code>sub</code> - Only subtraction problems</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>
+<code>mul</code> - Only multiplication problems</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>
+<code>div</code> - Only division problems</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>
+<code>rand</code> - Random problems</td>
+</tr>
+<tr>
+<td align="center"><code>level</code></td>
+<td align="center"><code>one</code></td>
+<td>
+<code>one</code> - Numbers from 0 - 9</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>
+<code>two</code> - Numbers from 0 - 49</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td>
+<code>three</code> - Numbers from 0 - 99</td>
+</tr>
+</tbody>
+</table><p>Example:</p>
+
+<p>Query - <code>/api/v1/problems?limit=3</code></p>
+
+<p>Response:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">n1</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">n2</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">op</span><span class="o">:</span> <span class="s2">"div"</span><span class="p">,</span>
+        <span class="nx">opSym</span><span class="o">:</span> <span class="s2">"/"</span><span class="p">,</span>
+        <span class="nx">ans</span><span class="o">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nx">n1</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nx">n2</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nx">op</span><span class="o">:</span> <span class="s2">"sub"</span><span class="p">,</span>
+        <span class="nx">opSym</span><span class="o">:</span> <span class="s2">"-"</span><span class="p">,</span>
+        <span class="nx">ans</span><span class="o">:</span> <span class="o">-</span><span class="mi">3</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nx">n1</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">n2</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="nx">op</span><span class="o">:</span> <span class="s2">"mul"</span><span class="p">,</span>
+        <span class="nx">opSym</span><span class="o">:</span> <span class="s2">"x"</span><span class="p">,</span>
+        <span class="nx">ans</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+</pre></div>
+
+<p>Query - <code>/api/v1/problems?limit=3&amp;level=two&amp;type=mul</code></p>
+
+<p>Response:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">n1</span><span class="o">:</span> <span class="mi">33</span><span class="p">,</span>
+        <span class="nx">n2</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nx">op</span><span class="o">:</span> <span class="s2">"mul"</span><span class="p">,</span>
+        <span class="nx">opSym</span><span class="o">:</span> <span class="s2">"x"</span><span class="p">,</span>
+        <span class="nx">ans</span><span class="o">:</span> <span class="mi">330</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nx">n1</span><span class="o">:</span> <span class="mi">11</span><span class="p">,</span>
+        <span class="nx">n2</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nx">op</span><span class="o">:</span> <span class="s2">"mul"</span><span class="p">,</span>
+        <span class="nx">opSym</span><span class="o">:</span> <span class="s2">"x"</span><span class="p">,</span>
+        <span class="nx">ans</span><span class="o">:</span> <span class="mi">55</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nx">n1</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+        <span class="nx">n2</span><span class="o">:</span> <span class="mi">26</span><span class="p">,</span>
+        <span class="nx">op</span><span class="o">:</span> <span class="s2">"mul"</span><span class="p">,</span>
+        <span class="nx">opSym</span><span class="o">:</span> <span class="s2">"x"</span><span class="p">,</span>
+        <span class="nx">ans</span><span class="o">:</span> <span class="mi">338</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+<p>Any suggestions are welcome.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/shubhamVerma">shubhamVerma</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
